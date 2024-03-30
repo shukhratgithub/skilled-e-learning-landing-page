@@ -39,10 +39,14 @@ body {
     padding: 0;
     margin: 0;
     font-family: "Plus Jakarta Sans", "Arial", sans-serif;
-    font-size: 16;
+    font-size: 16px;
     font-weight: 500;
     line-height: 26px;
+    background-color: #fff;
     background-image: linear-gradient(180deg, #fff 0%, #f0f1ff 100%);
+    background-repeat: no-repeat;
+    background-size: auto 100%;
+    background-attachment: fixed;
     color: var(--body-text);
 }
 
@@ -87,9 +91,10 @@ img {
     background-color: #4851ff;
     background-image: linear-gradient( 180deg, #4851ff 0%, #f02aa6 100% );
 }
-
+.button-primary:hover::after,
 .button-secondary:hover::after{
     position: absolute;
+    z-index: 1;
     left: 0;
     top: 0;
     width: 100%;
@@ -126,6 +131,28 @@ img {
     opacity: 0.6;
 }
 
+/* Stats Card */
+
+.stats-card {
+    background-color: #fff;
+    box-shadow: 0px 34px 54px 0px rgba(6, 22, 141, 0.16);
+    border-radius: 10px;
+    padding: 16px 20px;
+}
+
+.stats-card_title {
+    font-size: 14px;
+    line-height: 2;
+    font-weight: bold;
+}
+
+.stats-card_value {
+    margin: 0;
+    font-size: 32px;
+    line-height: normal;
+    font-weight: 800;
+    color: var(--dark);
+}
 /* Logo CTA */
 
 .logo-cta_container {
@@ -168,6 +195,11 @@ img {
     padding-bottom: 45px;
   }
 
+  .hero-container {
+    display: flex;
+    flex-direction: column;
+  }
+
   .hero-info {
     margin-bottom: 70px;
     display: flex;
@@ -188,12 +220,115 @@ img {
     margin-top: 0;
     margin-bottom: 24px;
   }
-  .second-one {
-    display: none;
+
+  .hero-img_stats {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    align-self: center;
   }
 
-  .third-one {
-    display: none;
+  .hero-picture {
+    display: block;
+  }
+
+  .hero-img {
+    display: block;
+    border-radius: 50%
+  }
+
+  .hero-stats_list {
+    margin: 0;
+  }
+
+  .hero-course_stats-card {
+    min-width: 155px;
+    z-index: 1;
+    position: absolute;
+    right: 100px; 
+    bottom: -24px;
+  }
+
+  .hero-members_stats-card {
+    position: absolute;
+    z-index: 1;
+    top: -24px;
+    right: -20px;
+  }
+
+  /* Popular Courses  */
+  .popular-courses {
+    padding-top: 45px;
+    padding-bottom: 80px;
+  }
+  .card-primary {
+    padding: 24px 28px 32px;
+    background-color: var(--primary);
+    background: linear-gradient(180deg, #ff6f48 0%, #f02aa6 100%);
+    color: #fff;
+  }
+
+  .card {
+    background-color: #fff;
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    border-radius: 10px;
+    padding: 56px 28px 32px;
+    box-shadow: 0px 25px 50px 0px rgba(6, 22, 141, 0.04);
+  }
+
+  .card-icon {
+    position: absolute;
+    z-index: 1;
+    left: 28px;
+    top: -24px;
+  }
+
+  .card-description {
+    margin-bottom: 24px;
+    margin-top: 0;
+    flex-grow: 1;
+  }
+
+  .card-primary .card-title {
+    margin-bottom: 0;
+    font-size: 24px;
+    line-height: 32px;
+    color: #fff;
+  }
+
+  .card-link {
+    text-decoration: none;
+    font-size: 18px;
+    line-height: 29px;
+    font-weight: bold;
+    color: var(--primary);
+  }
+
+  .card-link:hover {
+      color: #ffa7c3;
+  }
+
+  .card-link:active {
+    opacity: 0.6;
+  }
+
+  .popular-courses_card:not(:last-child) {
+    margin-bottom: 40px;
+  }
+
+  .card-title {
+    margin-top: 0;
+    color: var(--dark);
+    margin-bottom: 16px;
+    font-size: 20px;
+    font-weight: 800;
+    line-height: normal;
   }
 
   /* Site Footer */
@@ -203,6 +338,10 @@ img {
     padding-bottom: 36px;
     background-color: var(--dark);
   }
+
+  
+
+
 
 
 
@@ -217,7 +356,43 @@ img {
         font-size: 40px;
         margin-bottom: 26px;
       }
+
+      .hero-members_stats-card {
+        right: -40px;
+      }
+
+      .hero-course_stats-card {
+        right: 135px;
+      }
   }
+
+@media only screen and (min-width: 700px) {
+    .popular-courses {
+        padding-top: 155px;
+        padding-bottom: 30px;
+    }
+
+    .card-primary {
+        padding: 56px 32px 32px;
+    }
+
+    .card-icon {
+        left: 32px;
+    }
+    .popular-courses_container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+    }
+
+    .popular-courses_card {
+        width: calc((100% - 10px) / 2);
+    }
+
+    .popular-courses_card, .popular-courses_card:not(:last-child) {
+        margin-bottom: 56px;
+    }
+}
 
   @media only screen and (min-width: 769px) {
     .container {
@@ -234,6 +409,18 @@ img {
         padding-bottom: 80px;
     }
 
+    .hero-container {
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .hero-img {
+        width: 383px;
+        height: 383px;
+        margin-right: 41px;
+    }
+
     .hero-info {
         width: 100%;
         max-width: 400px;
@@ -247,6 +434,61 @@ img {
 
     .hero-description {
         margin-bottom: 25px;
+    }
+
+    .hero-course_stats-card {
+        bottom: -37px;
+        left: -45px;
+        right: auto;
+    }
+
+    .hero-members_stats-card {
+        top: -13px;
+        right: 10px;
+    }
+
+    .hero-img_stats {
+        margin-right: 41px;
+    }  
+  }
+
+  @media only screen and (min-width: 1024px) {
+    .stats-card {
+        padding: 20px 24px;
+    }
+
+    .stats-card_title {
+        font-size: 16px;
+        line-height: 28px;
+    }
+
+    .stats-card_value {
+        font-size: 40px;
+    }
+
+    .popular-courses {
+        padding-top: 54px;
+        padding-bottom: 60px;
+    }
+
+    .popular-courses_card {
+        width: calc((100% - 60px) / 3);
+    }
+    .card {
+        padding: 64px 32px 40px;
+    }
+    .card-primary {
+        padding: 64px 32px 32px;
+    }
+    .card-title {
+        font-size: 24px;
+        margin-bottom: 24px;
+
+    }
+
+    .card-primary .card-title {
+        font-size: 32px;
+        line-height: 40px;
     }
   }
 
@@ -288,4 +530,14 @@ img {
         margin-bottom: 40px;
     }
 
+ }
+
+ @media only screen and (min-width: 1300px) {
+        .hero-members_stats-card {
+            min-width: 155px;
+    }
+
+    .hero-course_stats-card {
+        min-width: 200px;
+    }
  }
